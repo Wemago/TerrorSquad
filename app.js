@@ -21,7 +21,9 @@ app.get('/', (req, res) => {
 app.get('/chat', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/views/chat.html'));
 })
-
+app.get('/game', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/views/game.html'));
+})
 
 io.on('connection', (socket) => {
 

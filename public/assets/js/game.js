@@ -1,5 +1,6 @@
 const cells = document.getElementsByClassName('cell');
 
+
 let gameStart = 'X';
 let turn = 'X';
 setTurn();
