@@ -71,6 +71,8 @@ button {
 table {
     border-collapse: collapse;
     background: #575ed8;
+    width: 100%;
+    min-height: 400px;
 }
 
 table tr td {
@@ -94,8 +96,8 @@ table tr td:last-child {
 }
 
 button {
-    height: 50px;
-    width: 50px;
+    height: 100%;
+    width: 100%;
     margin: 2px;
     background: transparent;
     border: none !important;

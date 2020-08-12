@@ -24,7 +24,6 @@ exports.unregister = (id) => {
         if (players[p].id === id) {
             players[p].id = null;
             players[p].avail = true;
-
             players[0].turn = false;
             players[1].turn = false;
         }

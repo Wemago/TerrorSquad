@@ -11,7 +11,7 @@ const server = app.listen(port, () => {
 
 const io = socket(server);
 
-const game = require('./game');
+const game = require('./classes/game');
 
 // Static files
 app.use(express.static('public'))
@@ -28,24 +28,30 @@ app.get('/game', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/views/game.html'));
 })
 
+app.get('/whiteboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/views/whiteboard.html'));
+})
+
 app.get('/app', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/views/app.html'));
 })
 
-app.use((req, res) => {
-    res.status(404);
-    res.send('Bad Request.');
-})
+// app.use((req, res) => {
+//     res.status(404);
+//     res.send('Bad Request.');
+// })
 
-app.use((err, req, res, next) => {
-    res.type('text/plain')
-    res.send('Error500')
-    console.log(err)
-})
+// app.use((err, req, res, next) => {
+//     res.type('text/plain')
+//     res.send('Error500')
+//     console.log(err)
+// })
 
 io.on('connection', (socket) => {
 
     console.log('Socket connected', socket.id);
+
+    // TicTacToe
 
     socket.emit('registerID', game.register(socket.id));
     io.emit('changeTurn', game.changeTurn());
@@ -56,13 +62,52 @@ io.on('connection', (socket) => {
         io.emit('changeTurn', game.changeTurn());
     });
 
+
+    // Chat
+
     socket.on('chat', (data) => {
         io.sockets.emit('chat', data);
-    })
+    });
 
     socket.on('typing', (data) => {
         socket.broadcast.emit('typing', data);
-    })
+    });
+
+
+    // WhiteBoard
+
+    socket.on("size", function(size) {
+        socket.broadcast.emit("onsize", size);
+    });
+
+    socket.on("color", function(color) {
+        socket.broadcast.emit("oncolor", color);
+    });
+
+    socket.on("toolchange", function(tool) {
+        socket.broadcast.emit("ontoolchange", tool);
+    });
+
+    socket.on("hamburger", function() {
+        socket.broadcast.emit("onhamburger");
+    });
+
+    socket.on("mousedown", function(point) {
+        socket.broadcast.emit("onmousedown", point);
+    });
+
+    socket.on("mousemove", function(point) {
+        console.log("Recieved Mouse down event")
+        socket.broadcast.emit("onmousemove", point);
+    });
+
+    socket.on("undo", function() {
+        socket.broadcast.emit("onundo");
+    });
+
+    socket.on("redo", function() {
+        socket.broadcast.emit("onredo");
+    });
 
     socket.on('disconnect', () => {
         console.log('Client disconnected');
