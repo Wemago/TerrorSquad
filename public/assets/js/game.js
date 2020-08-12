@@ -1,4 +1,24 @@
 const cells = document.getElementsByClassName('cell');
+const socket = io.connect(`http://localhost:5000/game`)
+console.log('Made socket connection', socket)
+
+io.on('connection', (socket) => {
+
+    console.log('Socket connected', socket.id);
+
+    socket.on('game', (data) => {
+        io.sockets.emit('game', data);
+    })
+
+    socket.on('playing', (data) => {
+        socket.broadcast.emit('Playing', data);
+    })
+
+    socket.on('disconnect', () => {
+        console.log('Client disconnected');
+    });
+
+});
 
 
 let gameStart = 'X';
