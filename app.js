@@ -19,6 +19,10 @@ app.get('/', (req, res) => {
     res.redirect(`/${uuidV4()}`);
 });
 
+app.get('/game', (req, res) => {
+    res.sendFile('game.html')
+});
+
 app.get('/:room', (req, res) => {
     res.render('index', { room: req.params.room });
 })

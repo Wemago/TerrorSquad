@@ -1,0 +1,55 @@
+.board {
+    z-index:1;
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: #34495e;
+    color: #fff;
+    border: 6px solid #2c3e50;
+    border-radius: 10px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.cell {
+    border: 6px solid #2c3e50;
+    border-radius: 2px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.turn-details {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.message-container {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: orange;
+    color: #fff;
+    border: 6px solid #2c3e50;
+    border-radius: 10px;
+    z-index: 300;
+    opacity: 0.5;
+    display: none;
+}
+
+.message {
+    font-weight: bold;
+    font-size:50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
