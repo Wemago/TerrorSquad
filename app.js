@@ -1,11 +1,53 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const socket = require('socket.io');
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/views/index.html');
+const app = express();
+const port = process.env.PORT || 3000;
+
+const server = app.listen(port, () => {
+    console.log('Server listening at port ' + port);
 });
 
-app.listen(port, () => {
-    console.log("Example app");
+const io = socket(server);
+
+const { v4: uuidV4 } = require('uuid');
+
+// Static files
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+    res.redirect(`/${uuidV4()}`);
+});
+
+app.get('/:room', (req, res) => {
+    res.render('index', { room: req.params.room });
+})
+
+io.on('connection', (socket) => {
+
+    console.log('Socket connected', socket.id);
+
+    socket.on('join-room', (roomId, userId) => {
+
+        console.log(roomId, userId);
+
+        socket.join(roomId);
+
+        socket.to(roomId).broadcast.emit('user-connected', userId);
+
+        socket.on('chat', (data) => {
+            io.sockets.emit('chat', data);
+        })
+
+        socket.on('typing', (data) => {
+            socket.broadcast.emit('typing', data);
+        })
+
+        socket.on('disconnect', () => {
+            console.log('Client disconnected');
+            socket.to(roomId).broadcast.emit('user-disconnected', userId);
+        });
+
+    });
+
 });
