@@ -1,3 +1,8 @@
-.jumbotron h1{
-    color: aqua
+body{
+    background: url("/Users/codecadet/Desktop/GitHub/Team-Pinho/public/assets/yqkomY.jpg") no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    
 }
