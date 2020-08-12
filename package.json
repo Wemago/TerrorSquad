@@ -1,0 +1,30 @@
+{
+    "name": "neptuno",
+    "version": "1.0.0",
+    "description": "P2P Platform for freedom.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Wemago/TerrorSquad.git"
+    },
+    "keywords": [
+        "P2P",
+        "platform",
+        "apps",
+        "games",
+        "distributed",
+        "web"
+    ],
+    "author": "TerrorSquad",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/Wemago/TerrorSquad/issues"
+    },
+    "homepage": "https://github.com/Wemago/TerrorSquad#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
