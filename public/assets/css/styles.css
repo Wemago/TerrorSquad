@@ -67,3 +67,40 @@ button {
     width: 100%;
     border-radius: 0 0 2px 2px;
 }
+
+table {
+    border-collapse: collapse;
+    background: #575ed8;
+}
+
+table tr td {
+    border: 1px solid black;
+}
+
+table tr:first-child td {
+    border-top: 0;
+}
+
+table tr:last-child td {
+    border-bottom: 0;
+}
+
+table tr td:first-child {
+    border-left: 0;
+}
+
+table tr td:last-child {
+    border-right: 0;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+    margin: 2px;
+    background: transparent;
+    border: none !important;
+}
+
+button:hover {
+    background-color: #ffe0ff;
+}

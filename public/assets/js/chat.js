@@ -1,4 +1,5 @@
 const socket = io.connect(`http://localhost:5000`)
+
 console.log('Made socket connection', socket)
 
 let message = document.getElementById('message')

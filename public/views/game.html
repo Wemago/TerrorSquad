@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptuno Game</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link href="./assets/css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li><a href="/game">Game</a></li>
+        <li><a href="/app">App</a></li>
+    </ul>
+
+    <div id='neptuno-chat'>
+        <h2>Neptuno Chat</h2>
+        <table>
+            <tr>
+                <td><button id="btn00"></button></td>
+                <td><button id="btn01"></button></td>
+                <td><button id="btn02"></button></td>
+            </tr>
+            <tr>
+                <td><button id="btn10"></button></td>
+                <td><button id="btn11"></button></td>
+                <td><button id="btn12"></button></td>
+            </tr>
+            <tr>
+                <td><button id="btn20"></button></td>
+                <td><button id="btn21"></button></td>
+                <td><button id="btn22"></button></td>
+            </tr>
+        </table>
+
+        <p id="role"></p>
+        <p id="turn"></p>
+    </div>
+
+    <script type="text/javascript" src="./assets/js/game.js"></script>
+
+</body>
+
+</html>
