@@ -1,0 +1,95 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+
+
+  .container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+  .leftpane {
+      padding-top: 100px;
+      width: 65%;
+      height: 100%;
+      float: left;
+      background-color: rosybrown;
+      border-collapse: collapse;
+      text-align: center
+  }
+
+
+  .rightUp {
+    width: 35%;
+    height: 50%;
+    position: relative;
+    float: right;
+    background-color: yellow;
+    border-collapse: collapse;
+    padding-top: 60px;
+    padding-left: 10px;
+    z-index: -1;
+  }
+
+  .rightDown{
+    width: 35%;
+    height: 50%;
+    position: relative;
+    float: right;
+    background-color: rgb(190, 53, 156);
+    border-collapse: collapse;
+    padding-top: 10px;
+    padding-left: 10px;
+    z-index: -1;
+  }
+
+  .header {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+  }
+
+  /* Page content /
+  .content {
+    padding: 16px;
+  }
+
+  / The sticky class is added to the header with JS when it reaches its scroll position /
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+
+
+
+  .fixed-header{
+    width: 100%;
+    position: fixed;
+    background: #333;
+    padding: 10px 0;
+    color: #fff;
+    text-align: center
+}
+.fixed-header{
+    top: 0;
+}
+
+nav a{
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 25px;
+    display: inline-block;
+}
+.container p{
+    line-height: 200px; / Create scrollbar to test positioning 
+}*/
+
+.parent {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
