@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 app.get('/chat', (req, res) => {
     //res.sendFile(path.join(__dirname, 'public/views/chat.html'));
-    res.render('chat', { roomId: uuidV4() })
+    res.render('chat', { roomId: 1 })
 })
 
 app.get('/game', (req, res) => {
@@ -81,7 +81,9 @@ io.on('connection', (socket) => {
     });
 
     socket.on('join-room', (roomId, userId) => {
+
         socket.join(roomId)
+
         socket.to(roomId).broadcast.emit('user-connected', userId)
 
         socket.on('disconnect', () => {
