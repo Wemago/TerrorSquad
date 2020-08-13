@@ -14,7 +14,8 @@ const io = socket(server);
 
 const game = require('./classes/game');
 
-let serverTaskList = [];
+// let serverTaskList = [];
+let todoList = [];
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -41,19 +42,20 @@ app.get('/editor', (req, res) => {
 })
 
 app.get('/todo', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/views/todo.html'));
+    //res.sendFile(path.join(__dirname, 'public/views/todo.html'));
+    res.render('todo', { todoList: todoList });
 })
 
-app.use((req, res) => {
-    res.status(404);
-    res.send('Bad Request.');
-})
+// app.use((req, res) => {
+//     res.status(404);
+//     res.send('Bad Request.');
+// })
 
-app.use((err, req, res, next) => {
-    res.type('text/plain')
-    res.send('Error500')
-    console.log(err)
-})
+// app.use((err, req, res, next) => {
+//     res.type('text/plain')
+//     res.send('Error500')
+//     console.log(err)
+// })
 
 io.on('connection', (socket) => {
 
@@ -129,12 +131,12 @@ io.on('connection', (socket) => {
 
     // TODO List
 
-    socket.emit('taskListFromServer', serverTaskList);
+    // socket.emit('taskListFromServer', serverTaskList);
 
-    socket.on('taskListToServer', function(taskListData) {
-        serverTaskList = taskListData;
-        socket.broadcast.emit('taskListFromServer', serverTaskList);
-    });
+    // socket.on('taskListToServer', function(taskListData) {
+    //     serverTaskList = taskListData;
+    //     socket.broadcast.emit('taskListFromServer', serverTaskList);
+    // });
 
     // Disconnect
 
