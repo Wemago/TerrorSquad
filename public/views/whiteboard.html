@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+    
 		<meta charset="utf-8">
 		<title>White Board</title>
         <meta charset="utf-8">
@@ -14,7 +15,7 @@
         border-radius: 5px;
       }
       body{
-        background: rgb(55,55,55) !important;
+        background: bisque !important;
       }
       #imageView { border: 1px solid #000; }
       #imageTemp { position: absolute; top: 1px; left: 1px; }
@@ -54,13 +55,30 @@ label{
     </style>
     <!-- Bootstrap -->
     <link href="./assets/js/whiteboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/game.css" rel="stylesheet" />
+    
     
 	</head>
     
-	<body style="margin-top:30px;">
-	<div class="container">
-    <div class="alert alert-info" style="padding: 10px !important; margin-bottom: 5px; width:88%">
-              <p style="">
+  <body style="margin-top:60px;">
+    <div class="fixed-header">
+      <div class="container">
+  <nav>
+      <a href="/">Home</a>
+      <a href="/chat">Chat</a>
+      <a href="/game">Game</a>
+      <a href="/editor">Code Editor</a>
+      <a href="/whiteboard">Whiteboard</a>
+      <a href="/todo">ToDo List</a>
+  </nav>
+      </div>
+  </div>
+
+  <br>
+
+	<div class="container" style="text-align: center;">
+    <div class="alert alert-info" style="text-align: center;padding: 10px !important; margin-bottom: 5px; width:90%">
+              
         <button type="button" class="btn btn-warning btn-sm" value="pencil" id="pencil-button">Pencil</button>
         <button type="button" class="btn btn-warning btn-sm" value="rect" id="rect-button">Rectangle</button>
         <button type="button" class="btn btn-warning btn-sm" value="circle" id="circle-button">Circle</button>
