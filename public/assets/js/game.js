@@ -2,6 +2,7 @@ const socket = io();
 
 let playerRole = null;
 let playerTurn = false;
+let playerMoves = 0 ;
 
 socket.on('registerID', (role) => {
 
@@ -12,7 +13,8 @@ socket.on('registerID', (role) => {
 });
 
 socket.on('changeTurn', (role) => {
-
+    playerMoves++;
+    checkDraw(playerMoves);
     playerTurn = playerRole === role;
 
     document.getElementById('turn').innerHTML = 'It is ' + (playerTurn ? '' : 'NOT') + ' your turn';
@@ -53,5 +55,12 @@ for (let y = 0; y < 3; y++) {
                 socket.emit('playerMove', playerRole, x, y);
             }
         });
+    }
+}
+
+const checkDraw = (moves) => {
+    if(moves >= 9){
+        playerMoves = 0;
+        document.getElementById('turn').innerHTML = 'It is a draw!';
     }
 }
