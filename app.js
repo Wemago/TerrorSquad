@@ -13,6 +13,8 @@ const io = socket(server);
 
 const game = require('./classes/game');
 
+let serverTaskList = [];
+
 // Static files
 app.use(express.static('public'))
 
@@ -32,8 +34,12 @@ app.get('/whiteboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/views/whiteboard.html'));
 })
 
-app.get('/app', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/views/app.html'));
+app.get('/editor', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/views/editor.html'));
+})
+
+app.get('/todo', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/views/todo.html'));
 })
 
 app.use((req, res) => {
@@ -103,6 +109,22 @@ io.on('connection', (socket) => {
     socket.on("redo", function() {
         socket.broadcast.emit("onredo");
     });
+
+    // Editor
+
+    socket.on('code', function(data) {
+        socket.broadcast.emit('code', data);
+    });
+
+    // TODO List
+    socket.emit('taskListFromServer', serverTaskList);
+
+    socket.on('taskListToServer', function(taskListData) {
+        serverTaskList = taskListData;
+        socket.broadcast.emit('taskListFromServer', serverTaskList);
+    });
+
+    // Disconnect
 
     socket.on('disconnect', () => {
         console.log('Client disconnected');

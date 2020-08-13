@@ -28,6 +28,7 @@
     "homepage": "https://github.com/Wemago/TerrorSquad#readme",
     "dependencies": {
         "express": "^4.17.1",
+        "monaco-editor": "^0.20.0",
         "socket.io": "^2.3.0"
     },
     "devDependencies": {

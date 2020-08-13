@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Neptuno Code Editor</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/css/codemirror.css">
+    <link rel="stylesheet" href="./assets/js/addon/hint/show-hint.css">
+</head>
+
+<body>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li><a href="/game">Game</a></li>
+        <li><a href="/editor">Cde Editor</a></li>
+        <li><a href="/whiteboard">Whiteboard</a></li>
+        <li><a href="/todo">ToDo List</a></li>
+    </ul>
+
+    <h1>Code Editor</h1>
+
+    <textarea id="codePanel" class="codemirror-textarea">Code here will show on the screen of ALL users.</textarea>
+
+    <script src="./assets/js/codemirror.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/addon/hint/javascript-hint.js"></script>
+    <script src="./assets/js/addon/hint/show-hint.js"></script>
+    <script src="./assets/js/addon/hint/html-hint.js"></script>
+    <script src="./assets/js/addon/hint/anyword-hint.js"></script>
+    <script src="./assets/js/addon/comment/comment.js"></script>
+    <script src="./assets/js/addon/comment/continuecomment.js"></script>
+
+</body>
+
+</html>
