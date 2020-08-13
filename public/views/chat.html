@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link href="./assets/css/styles.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -17,7 +19,20 @@
         <li><a href="/whiteboard">Whiteboard</a></li>
     </ul>
 
-    <h1>Home</h1>
+
+    <div id='neptuno-chat'>
+        <h2>Neptuno Chat</h2>
+        <div id='chat-window'>
+            <div id='output'></div>
+            <div id='feedback'></div>
+        </div>
+        <input id='handle' type='text' placeholder='Handle' />
+        <input id='message' type='text' placeholder='Message' />
+        <button id='send'>Send</button>
+    </div>
+
+    <script src="./assets/js/chat.js"></script>
+
 </body>
 
 </html>
