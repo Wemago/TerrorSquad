@@ -4,13 +4,11 @@ body, html {
     margin: 0;
   }
 
-
-
   .container{
     width: 80%;
     margin: 0 auto;
 }
-
+  
   .leftpane {
       padding-top: 100px;
       width: 65%;
@@ -20,8 +18,7 @@ body, html {
       border-collapse: collapse;
       text-align: center
   }
-
-
+  
   .rightUp {
     width: 35%;
     height: 50%;
@@ -45,30 +42,28 @@ body, html {
     padding-left: 10px;
     z-index: -1;
   }
-
+  
   .header {
     padding: 10px 16px;
     background: #555;
     color: #f1f1f1;
   }
-
-  /* Page content /
+  
+  /* Page content */
   .content {
     padding: 16px;
   }
-
-  / The sticky class is added to the header with JS when it reaches its scroll position /
+  
+  /* The sticky class is added to the header with JS when it reaches its scroll position */
   .sticky {
     position: fixed;
     top: 0;
     width: 100%
   }
-
-
-
+  
   .fixed-header{
     width: 100%;
-    position: fixed;
+    position: fixed;        
     background: #333;
     padding: 10px 0;
     color: #fff;
@@ -85,8 +80,8 @@ nav a{
     display: inline-block;
 }
 .container p{
-    line-height: 200px; / Create scrollbar to test positioning 
-}*/
+    line-height: 200px; /* Create scrollbar to test positioning */
+} 
 
 .parent {
     margin-left: auto;
