@@ -1,26 +1,88 @@
+
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
 
-<head>
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neptuno Platform</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
 
-</head>
+    <style>
+      body {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        align-content: center;
+      }
+    </style>
+    <style>
+      body {
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.9) 100%
+          ),
+          url(".././assets/mar.jpg");
+        background-image: no-repeat;
+      }
+    </style>
+  </head>
 
-<body>
+  <body >
+    <span class="text-primary text-center"><h1>Welcome to Aquarius!</h1></span>
 
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/chat">Chat</a></li>
-        <li><a href="/game">Game</a></li>
-        <li><a href="/editor">Cde Editor</a></li>
-        <li><a href="/whiteboard">Whiteboard</a></li>
-        <li><a href="/todo">ToDo List</a></li>
-    </ul>
+    <!-- <p class="py-5 text-center">"This is the dawning of the Age…"</p> -->
+    <p class="py-5 text-center" ><strong >"This is the dawning of the Age…"</strong></p>
+    <img
+      src="../assets/boss.png"
+      style="display: block; margin-left: auto; margin-right: auto; width: 35%;"
+      alt="boss"
+      class="img-fluid"
+    />
+    <p></p>
 
-    <h1>Home</h1>
-
-</body>
-
+    <div class="text-center">   
+      <button
+        onclick="location.href='/chat'"
+        type="button"
+        class="btn btn-info btn-lg"
+      >
+        Chat
+      </button>
+      <button
+        onclick="location.href='/game'"
+        type="button"
+        class="btn btn-info btn-lg"
+      >
+        Game
+      </button>
+      <button
+        onclick="location.href='/whiteboard'"
+        type="button"
+        class="btn btn-info btn-lg"
+      >
+        White-Board
+      </button>
+      <button
+      onclick="location.href='/editor'"
+      type="button"
+      class="btn btn-info btn-lg"
+    >
+      Code-Editor
+    </button>
+    <button
+      onclick="location.href='/todo'"
+      type="button"
+      class="btn btn-info btn-lg"
+    >
+      To-Do-List
+    </button>
+    </div>
+    </div>
+  </body>
 </html>

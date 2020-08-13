@@ -10,22 +10,31 @@
     <link rel="stylesheet" href="./assets/css/editor.css" />
     <link rel="stylesheet" href="./assets/css/codemirror.css">
     <link rel="stylesheet" href="./assets/js/addon/hint/show-hint.css">
+    <link href="./assets/css/example.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="./assets/js/video.js" defer></script>
 </head>
 
 <body>
 
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/chat">Chat</a></li>
-        <li><a href="/game">Game</a></li>
-        <li><a href="/editor">Cde Editor</a></li>
-        <li><a href="/whiteboard">Whiteboard</a></li>
-        <li><a href="/todo">ToDo List</a></li>
-    </ul>
+        <div class="fixed-header">
+                <div class="container">
+            <nav>
+                <a href="/">Home</a>
+                <a href="/chat">Chat</a>
+                <a href="/game">Game</a>
+                <a href="/editor">Code Editor</a>
+                <a href="/whiteboard">Whiteboard</a>
+                <a href="/todo">ToDo List</a>
+            </nav>
+                </div>
+            </div>
 
     <h1>Code Editor</h1>
 
-    <textarea id="codePanel" class="codemirror-textarea">Code here will show on the screen of ALL users.</textarea>
+    
+     <textarea id="codePanel" class="codemirror-textarea">Code here will show on the screen of ALL users.</textarea>
+    
 
     <script src="./assets/js/codemirror.js"></script>
     <script src="./assets/js/main.js"></script>
@@ -35,7 +44,6 @@
     <script src="./assets/js/addon/hint/anyword-hint.js"></script>
     <script src="./assets/js/addon/comment/comment.js"></script>
     <script src="./assets/js/addon/comment/continuecomment.js"></script>
-
 </body>
 
 </html>
