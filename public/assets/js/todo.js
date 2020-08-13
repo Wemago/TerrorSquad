@@ -1,75 +1,58 @@
-const socket = io.connect()
-const taskList = document.getElementById('task-list')
-let taskListData = []
+// Connection with socket
+let socket = io.connect("/");
 
-document.getElementById('add-task').addEventListener('keydown', function(e) {
-    var value = this.value
-    if (e.key === 'Enter' && value) {
-        addItem(value)
-    }
+document.addEventListener("DOMContentLoaded", function() {
+    socket.emit('todoList'); // we launch the "event" for newUser
+});
+
+function writeTodoList(todoList) {
+    let todo = '',
+        done = '';
+    todoList.sort(function(a, b) { // we sort by ID descending
+        return b.id - a.id;
+    });
+    todoList.forEach(function(item, index) {
+        if (item.done == false) {
+            todo = todo + '<div class="task task-todo"><a id="' + item.id + '" data-done="false"><i class="fa fa-square-o" aria-hidden="true"></i></a> <span class="task-item"><span class="user-name">' + item.user + '</span> ' + item.desc + '</span></div>';
+        } else if (item.done == true) {
+            done = done + '<div class="task task-done"><a id="' + item.id + '" data-done="true"><i class="fa fa-check-square-o" aria-hidden="true"></i></a> <span class="task-item"><span class="user-name">' + item.user + '</span> ' + item.desc + '</span></div>';
+        }
+    });
+    document.querySelector('#todo').innerHTML = todo;
+    document.querySelector('#done').innerHTML = done;
+}
+
+function addCheckboxToEventListener() {
+    let checkbox = document.querySelectorAll('a[data-done]');
+    /* ES6 notation */
+    Array.from(checkbox).forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            socket.emit('actionTask', this.id);
+        });
+    });
+}
+
+// we ask for an alias to the new user
+let alias = '';
+do {
+    alias = prompt('Choose an alias, please ?'); // we ask for an alias
+} while (alias == '');
+document.title = alias + ' | ' + document.title; // we update title page
+
+// Submit a new addTask
+document.querySelector('#task-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let task = {};
+    task.user = alias;
+    task.desc = document.querySelector('#new-task').value; // we read the message from the input
+    socket.emit('addTask', task); // we launch the broadcast event to inform other user
+    document.querySelector('#new-task').value = ''; // we empty the input
+    document.querySelector('#new-task').focus();
 })
 
-function addItem(value) {
-    addItemToDOM(value)
-    document.getElementById('add-task').value = ''
-    taskListData.push(value)
-    dataUpdate()
-}
-
-function removeItem() {
-    let task = this.parentNode
-    let parent = task.parentNode
-    let value = task.childNodes[0].innerHTML
-    taskListData.splice(taskListData.indexOf(value), 1)
-    taskList.removeChild(task)
-    dataUpdate()
-}
-
-function addItemToDOM(text) {
-
-    let newTask = document.createElement('li')
-    let listText = document.createElement('span')
-
-    listText.classList.add('list-text')
-    listText.innerText = text
-
-    let supressTask = document.createElement('a')
-
-    supressTask.classList.add('supress-task')
-    supressTask.innerHTML = '✘'
-
-    newTask.appendChild(listText)
-    newTask.appendChild(supressTask)
-    taskList.insertBefore(newTask, taskList.childNodes[0])
-
-    // Add click event for removing item
-    supressTask.addEventListener('click', removeItem)
-}
-
-function renderTodoList() {
-
-    if (!taskListData) {
-        return;
-    }
-
-    for (let i = 0; i < taskListData.length; i++) {
-        let value = taskListData[i]
-        addItemToDOM(value)
-    }
-}
-
-function dataUpdate() {
-    socket.emit('taskListToServer', taskListData)
-}
-
-function resetList() {
-    while (taskList.firstChild) {
-        taskList.removeChild(taskList.firstChild)
-    }
-}
-
-socket.on('taskListFromServer', function(serverTaskList) {
-    taskListData = serverTaskList
-    resetList()
-    renderTodoList()
-})
+// Update todoList when we receive an event
+socket.on('transmitTodoList', function(todoList) {
+    writeTodoList(todoList);
+    addCheckboxToEventListener();
+});

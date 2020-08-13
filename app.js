@@ -1,7 +1,8 @@
 const express = require('express');
 const socket = require('socket.io');
 const path = require('path');
-const { v4: uuidV4 } = require('uuid')
+const { v4: uuidV4 } = require('uuid');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -131,12 +132,45 @@ io.on('connection', (socket) => {
 
     // TODO List
 
-    // socket.emit('taskListFromServer', serverTaskList);
+    socket.on('todoList', function() {
 
-    // socket.on('taskListToServer', function(taskListData) {
-    //     serverTaskList = taskListData;
-    //     socket.broadcast.emit('taskListFromServer', serverTaskList);
-    // });
+        // const content = fs.readFileSync('data/data.json', 'utf8');
+        // const todoList = JSON.parse(content);
+
+        socket.emit("transmitTodoList", todoList);
+    });
+
+    socket.on('addTask', function(task) {
+        task.id = Date.now(); // we generate an ID for the task
+        task.done = false; // we assign the false status 
+
+        // const content = fs.readFileSync('data/data.json', 'utf8');
+        // const data = JSON.parse(content);
+        // data.taches.push({user:name, descr:task});
+        // const susu = JSON.stringify(data);
+        // fs.writeFile('data.json', susu, function(err){
+        // 	if(err) throw err;
+        // 	console.log('file saved !')
+        // })
+
+
+
+        todoList.push(task); // we add the new one in our array
+        io.emit('transmitTodoList', todoList); // send to all include the sender
+    });
+
+    socket.on('actionTask', function(id) {
+        if (id != '' && id != undefined) { // we check if there is a valid id
+            todoList.forEach((item, index) => { // we loop our todoList array
+                if (item.id == id) { // when the id of the request is equal to the id in array
+                    item.done = ((item.done == false) ? true : false); // we reverse the value
+                }
+            });
+        };
+        io.emit('transmitTodoList', todoList); // send to all include the sender
+    });
+
+
 
     // Disconnect
 
