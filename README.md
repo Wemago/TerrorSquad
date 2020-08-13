@@ -1,2 +1,2 @@
-# Team-Pinho
+# Terror Squad
 GitBusters Hackaton Terceira
