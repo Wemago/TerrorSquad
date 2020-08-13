@@ -50,7 +50,7 @@ Game.prototype.isRunning = function() {
  *
  * @param {Socket} player -- the player to add
  */
-Game.prototype.addPlayer = function(player) {
+Game.prototype.addPlayer = function(player, numberOfSockets) {
     if (this.isRunning()) {
         player.emit('init', {
             isPlaying: false,
@@ -70,6 +70,7 @@ Game.prototype.addPlayer = function(player) {
     if (this.player2 !== null) {
         this.startGame();
     }
+    return numberOfSockets++;
 };
 
 /**
