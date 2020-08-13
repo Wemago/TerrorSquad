@@ -1,6 +1,7 @@
 const express = require('express');
 const socket = require('socket.io');
 const path = require('path');
+const { v4: uuidV4 } = require('uuid')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,7 +16,7 @@ const game = require('./classes/game');
 
 let serverTaskList = [];
 
-// Static files
+app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
@@ -23,7 +24,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/chat', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/views/chat.html'));
+    //res.sendFile(path.join(__dirname, 'public/views/chat.html'));
+    res.render('chat', { roomId: uuidV4() })
 })
 
 app.get('/game', (req, res) => {
@@ -75,6 +77,15 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('typing', data);
     });
 
+    socket.on('join-room', (roomId, userId) => {
+        socket.join(roomId)
+        socket.to(roomId).broadcast.emit('user-connected', userId)
+
+        socket.on('disconnect', () => {
+            socket.to(roomId).broadcast.emit('user-disconnected', userId)
+        })
+    })
+
     // WhiteBoard
 
     socket.on("size", function(size) {
@@ -117,6 +128,7 @@ io.on('connection', (socket) => {
     });
 
     // TODO List
+
     socket.emit('taskListFromServer', serverTaskList);
 
     socket.on('taskListToServer', function(taskListData) {
