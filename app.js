@@ -54,6 +54,7 @@ io.on('connection', (socket) => {
     // TicTacToe
 
     socket.emit('registerID', game.register(socket.id));
+
     io.emit('changeTurn', game.changeTurn());
 
     socket.on('playerMove', (role, x, y) => {

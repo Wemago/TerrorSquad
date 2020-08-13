@@ -1,4 +1,4 @@
-const socket = io.connect("http://localhost:500/");
+const socket = io.connect("http://localhost:5000/");
 const board = document.querySelector(".board");
 
 board.height = window.innerHeight;
