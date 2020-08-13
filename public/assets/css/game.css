@@ -14,31 +14,33 @@ body, html {
       width: 65%;
       height: 100%;
       float: left;
-      background-color: rosybrown;
+      background-color: bisque;
       border-collapse: collapse;
+      border-block-end-color: black;
       text-align: center
   }
   
-  .rightUp {
+  /* .rightUp {
     width: 35%;
     height: 50%;
     position: relative;
     float: right;
-    background-color: yellow;
+    background-color: rgb(0, 183, 255);
     border-collapse: collapse;
     padding-top: 60px;
     padding-left: 10px;
     z-index: -1;
-  }
+  } */
 
   .rightDown{
     width: 35%;
-    height: 50%;
+    height: 100%;
     position: relative;
     float: right;
-    background-color: rgb(190, 53, 156);
+    background-color: rgb(155, 224, 241);
     border-collapse: collapse;
-    padding-top: 10px;
+    padding-right: 20px;
+    padding-top: 100px;
     padding-left: 10px;
     z-index: -1;
   }
@@ -75,10 +77,18 @@ body, html {
 
 nav a{
     color: #fff;
-    text-decoration: none;
+    text-decoration-style: dashed;
     padding: 7px 25px;
     display: inline-block;
+    
 }
+
+nav a:hover {
+  border-radius: 8px;
+  background-color: lightgray;
+  text-decoration-style: solid
+}
+
 .container p{
     line-height: 200px; /* Create scrollbar to test positioning */
 } 
@@ -87,4 +97,11 @@ nav a{
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+}
+
+.send{
+  font-size: 16px;
+  
+  color: white;
+  background-color: blue
 }
