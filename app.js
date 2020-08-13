@@ -36,16 +36,16 @@ app.get('/app', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/views/app.html'));
 })
 
-// app.use((req, res) => {
-//     res.status(404);
-//     res.send('Bad Request.');
-// })
+app.use((req, res) => {
+    res.status(404);
+    res.send('Bad Request.');
+})
 
-// app.use((err, req, res, next) => {
-//     res.type('text/plain')
-//     res.send('Error500')
-//     console.log(err)
-// })
+app.use((err, req, res, next) => {
+    res.type('text/plain')
+    res.send('Error500')
+    console.log(err)
+})
 
 io.on('connection', (socket) => {
 
@@ -53,16 +53,11 @@ io.on('connection', (socket) => {
 
     // TicTacToe
 
-    socket.emit('registerID', game.register(socket.id));
+    game.addPlayer(socket);
 
-    io.emit('changeTurn', game.changeTurn());
-
-    socket.on('playerMove', (role, x, y) => {
-        io.emit('updateBoard', game.place(role, x, y));
-        game.toggleTurn();
-        io.emit('changeTurn', game.changeTurn());
+    socket.on('selectSquare', function(data) {
+        game.selectSquare(socket, data);
     });
-
 
     // Chat
 
@@ -73,7 +68,6 @@ io.on('connection', (socket) => {
     socket.on('typing', (data) => {
         socket.broadcast.emit('typing', data);
     });
-
 
     // WhiteBoard
 
@@ -112,9 +106,7 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('Client disconnected');
-        game.unregister(socket.id);
-        io.emit('updateBoard', game.reset());
-        io.emit('changeTurn', game.changeTurn());
+        game.removePlayer(socket);
     });
 
 });
