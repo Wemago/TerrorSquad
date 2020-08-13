@@ -1,11 +1,14 @@
+
 * {
     box-sizing: border-box;
 }
 
 html,
 body {
+    padding-top: 50px;
     width: 100%;
     height: 100%;
+    background-color: silver
 }
 
 h1 {
@@ -108,3 +111,40 @@ main section div:last-of-type {
 #done .task .task-item {
     text-decoration: line-through;
 }
+
+#doneS{
+   background-color: rgba(167, 224, 110, 0.774)
+
+}
+
+#doneTitle{
+    background-color: forestgreen
+}
+
+#todoS{
+    background-color: rgb(238, 220, 117) 
+ }
+ 
+
+ #todoTitle{
+     background-color: rgb(245, 181, 20)
+ }
+
+ #addTask{
+    width: 100%;
+    align-self: center
+ }
+
+ #addBtn{
+    border-radius: 8px;
+    align-self: center
+ }
+
+ #addBtn:hover{
+    background-color: dimgray;
+    color: aliceblue
+ }
+ 
+ #new-task:focus{
+    border: 3px solid #555;
+ }
