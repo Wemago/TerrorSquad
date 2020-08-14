@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aquarius</title>
+    <link rel="shortcut icon" type="image/png" href="./images/favicon.ico" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+
+    <script>
+        const ROOM_ID = "<%= roomId %>";
+    </script>
+
+</head>
+
+<body>
+    <div class="header">
+
+        <div class="logo">
+            <h1>Aquarius</h1>
+        </div>
+
+        <nav role="navigation" style="padding-left: 40rem;">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Games</a>
+                    <ul class="dropdown">
+                        <li><a href="/game">Tic Tac Toe</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Apps</a>
+                    <ul class="dropdown">
+                        <li><a href="/chat">Chat</a></li>
+                        <li><a href="/editor">Editor</a></li>
+                        <li><a href="/whiteboard">Whiteboard</a></li>
+                        <li><a href="/todo">ToDo List</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="main">
+        <div class="main__left">
+
+            <div style="margin: 80px auto; text-align: center;">
+
+                <h2>Aquarius - Tic Tac Toe </h2>
+
+                <div class="content">
+                    <p class="info"></p>
+                    <p class="status">Loading...</p>
+                    <table id="game"></table>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="main__right">
+            <div class="main__chat_window">
+                <div class="messages">
+
+                </div>
+            </div>
+            <div class="main__message_container">
+                <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
+                <div id="send" class="options__button">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./js/game.js"></script>
+</body>
+
+</html>
