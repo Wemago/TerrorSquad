@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aquarius</title>
+    <link rel="shortcut icon" type="image/png" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./css/editor.css" />
+    <link rel="stylesheet" href="./css/codemirror.css">
+    <link rel="stylesheet" href="./js/addon/hint/show-hint.css">
+
+</head>
+
+<body>
+    <div class="header">
+
+        <div class="logo">
+            <h1>Aquarius</h1>
+        </div>
+
+        <nav role="navigation" style="padding-left: 40rem;">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Games</a>
+                    <ul class="dropdown">
+                        <li><a href="/game">Tic Tac Toe</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Apps</a>
+                    <ul class="dropdown">
+                        <li><a href="/chat">Chat</a></li>
+                        <li><a href="/editor">Editor</a></li>
+                        <li><a href="/whiteboard">Whiteboard</a></li>
+                        <li><a href="/todo">ToDo List</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="main">
+        <div class="main__left">
+            <h2>Code Editor</h2>
+            <textarea id="codePanel" class="codemirror-textarea">Code here will show on the screen of ALL users.</textarea>
+        </div>
+        <div class="main__right">
+            <div class="main__chat_window">
+                <div class="messages">
+
+                </div>
+            </div>
+            <div class="main__message_container">
+                <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
+                <div id="send" class="options__button">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/codemirror.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/addon/hint/javascript-hint.js"></script>
+    <script src="./js/addon/hint/show-hint.js"></script>
+    <script src="./js/addon/hint/html-hint.js"></script>
+    <script src="./js/addon/hint/anyword-hint.js"></script>
+    <script src="./js/addon/comment/comment.js"></script>
+    <script src="./js/addon/comment/continuecomment.js"></script>
+
+</body>
+
+</html>

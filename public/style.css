@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+:root {
+    --main-darklg: #1d2635;
+    --main-dark: #161d29;
+    --primary-color: #2f80ec;
+    --main-light: #eeeeee;
+    font-family: "Poppins", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    width: 100%;
+    background-color: var(--main-darklg);
+}
+
+.logo>h1 {
+    color: var(--main-light);
+    font-size: 26px;
+}
+
+.main {
+    overflow: hidden;
+    height: 92vh;
+    display: flex;
+}
+
+.main__left {
+    flex: 0.7;
+    display: flex;
+    flex-direction: column;
+}
+
+.videos__group {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--main-dark);
+}
+
+video {
+    height: 300px;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    width: 400px;
+    object-fit: cover;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+
+.options {
+    padding: 1rem;
+    display: flex;
+    background-color: var(--main-darklg);
+}
+
+.options__left {
+    display: flex;
+}
+
+.options__right {
+    margin-left: auto;
+}
+
+.options__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    height: 50px;
+    border-radius: 2px;
+    color: var(--main-light);
+    font-size: 1.2rem;
+    width: 50px;
+    margin: 0 0.5rem;
+}
+
+.background__red {
+    background-color: #f6484a;
+}
+
+.main__right {
+    display: flex;
+    flex-direction: column;
+    flex: 0.3;
+    background-color: #242f41;
+}
+
+.main__chat_window {
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.main__chat_window::-webkit-scrollbar {
+    display: none;
+}
+
+.main__message_container {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__message_container>input {
+    height: 50px;
+    flex: 1;
+    font-size: 1rem;
+    border-radius: 2px;
+    padding-left: 20px;
+    border: none;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+}
+
+.message>b {
+    color: #eeeeee;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.message>b>i {
+    margin-right: 0.7rem;
+    font-size: 1.5rem;
+}
+
+.message>span {
+    background-color: #eeeeee;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+#video-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* menu */
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    font-family: monospace;
+}
+
+ul {
+    background: darkorange;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    font-size: 15px;
+}
+
+li {
+    color: #fff;
+    background: darkorange;
+    display: block;
+    float: left;
+    padding: 0.6rem 1.4rem;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+li a {
+    color: #fff;
+}
+
+li:hover,
+li:focus-within {
+    background: red;
+    cursor: pointer;
+}
+
+li:focus-within a {
+    outline: none;
+}
+
+ul li ul {
+    background: orange;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 0.5rem;
+    left: 0;
+    display: none;
+}
+
+ul li:hover>ul,
+ul li:focus-within>ul,
+ul li ul:hover,
+ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+}
+
+#game {
+    margin: 50px auto 0;
+    border-collapse: collapse;
+}
+
+#game tr:first-child td {
+    border-top: none;
+}
+
+#game tr:last-child td {
+    border-bottom: none;
+}
+
+#game td {
+    border: 3px solid #000;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+#game td:first-child {
+    border-left: none;
+}
+
+#game td:last-child {
+    border-right: none;
+}
+
+#game td.player:before {
+    font-size: 64px;
+}
+
+#game td.player.X:before {
+    content: "✕";
+}
+
+#game td.player.O:before {
+    content: "◯";
+}
+
+#game td.active:hover {
+    cursor: pointer;
+    background: #fafafa;
+}
+
+#game td.highlight {
+    color: #f00;
+}
