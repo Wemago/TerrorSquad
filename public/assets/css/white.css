@@ -28,6 +28,7 @@ button {
 canvas {
 	border-radius: 5px;
 	cursor: url(../img/pen.png), crosshair;
+	
 }
 
 output {
@@ -246,6 +247,8 @@ ul li {
     box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
+
+
 
 /* Classes */
 
