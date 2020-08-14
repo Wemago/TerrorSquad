@@ -8,11 +8,96 @@
 
     <link rel="shortcut icon" type="image/png" href="./images/favicon.ico" />
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" />
+
+    <style type="text/css">
+        #container {
+            position: relative;
+        }
+        
+        #container {
+            width: 1000px;
+            height: 500px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        
+        #imageView {
+            border: 1px solid #000;
+        }
+        
+        #imageTemp {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+        }
+        
+        canvas {
+            border-radius: 2px;
+            cursor: url(../img/pen.png), crosshair;
+        }
+        
+        #text_tool {
+            position: absolute;
+            border: 1px dashed black;
+            outline: 0;
+            z-index: 1000 !important;
+            display: none;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .container .btn.btn-sm {
+            background: #06f;
+            color: #fff;
+            outline: none;
+            cursor: pointer;
+            text-shadow: 0 1px #06f;
+            display: inline-block;
+            font-size: 16px;
+            border: none;
+            border-radius: 2px;
+            padding: 5px 15px;
+            margin-right: 5px;
+        }
+        
+        .container .btn.btn-sm:active {
+            background: #06f;
+        }
+        
+        label {
+            color: #fff;
+        }
+        
+        input {
+            padding: 4px 4px;
+        }
+        
+        select {
+            padding: 4px 0;
+        }
+    </style>
+
+    <!-- Script files -->
+    <script src='./js/jquery.min.js'></script>
+
+    <script src="./js/jscolor/jscolor.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/canvas.js"></script>
+    <!-- <script src="canvas-backup-latest-v1.js"></script> -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var board_url = window.location.href;
+            $('.linkToBoard').attr("href", board_url);
+        });
+    </script>
 
 </head>
 
 <body>
+
     <div class="header">
 
         <div class="logo">
@@ -41,9 +126,104 @@
 
     </div>
     <div class="main">
+        <div class="main__left">
 
+            <h1 style="margin: 20px auto;">Aquarius - Whiteboard</h1>
 
+            <div class="container" style="margin: 0 auto;">
+                <p style="margin-bottom: 20px;">
+                    <button type="button" class="btn btn-warning btn-sm" value="pencil" id="pencil-button">Pencil</button>
+                    <button type="button" class="btn btn-warning btn-sm" value="rect" id="rect-button">Rectangle</button>
+                    <button type="button" class="btn btn-warning btn-sm" value="circle" id="circle-button">Circle</button>
+                    <button type="button" class="btn btn-warning btn-sm" value="ellipse" id="ellipse-button">Ellipse</button>
+                    <button type="button" class="btn btn-warning btn-sm" value="line" id="line-button">Line</button>
+                    <button type="button" class="btn btn-warning btn-sm" value="text" id="text-button">Text</button>
+                    <button type="button" class="btn btn-warning btn-sm" id="clear-all">Clear All</button>
+                    <label for="colour" style="position:absolute;">Colour : </label>
+                    <input id="colour-picker" value="#000000" style="width:80px;" class="jscolor {width:243, height:150, position:'right',
+            borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}">
+                    <!-- <span class="form-group" style="width: 100px;display: inline-block;">
+                      <label for="draw-grid">Grid: </label>
+                      <select class="form-control" id="draw-grid">
+                        <option value="normal">Normal</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                        <option value="nogrid">No Grid</option>
+                      </select>
+                </span> -->
+                    <span class="form-group" style="width: 90px;display: inline-block;">
+                  <label for="line-Width">Thickness: </label>
+                  <select class="form-control" id="line-Width">
+                    <option>2</option>
+                    <option>4</option>
+                    <option>6</option>
+                    <option>8</option>
+                    <option>10</option>
+                    <option>12</option>
+                    <option>14</option>
+                  </select>
+                </span>
+                    <span class="form-group" style="width: 130px;display: inline-block;">
+                  <label for="draw-text-font-family">Font: </label>
+                  <select class="form-control" id="draw-text-font-family">
+                    <option value="Arial">Arial</option>
+                    <option value="Verdana" selected>Verdana</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="serif">serif</option>
+                    <option value="sans-serif">sans-serif</option>
+                  </select>
+                </span>
+                    <span class="form-group" style="width: 90px;display: inline-block;">
+                  <label for="draw-text-font-size">Font Size: </label>
+                  <select class="form-control" id="draw-text-font-size">
+                    <option value="16">16 Px</option>
+                    <option value="18">18 Px</option>
+                    <option value="20">20 Px</option>
+                    <option value="22">22 Px</option>
+                    <option value="24">24 Px</option>
+                    <option value="26">26 Px</option>
+                    <option value="28">28 Px</option>
+                    <option value="30">30 Px</option>
+                    <option value="32" selected>32 Px</option>
+                    <option value="34">34 Px</option>
+                    <option value="36">36 Px</option>
+                    <option value="38">38 Px</option>
+                    <option value="40">40 Px</option>
+                  </select>
+                </span>
+                </p>
+
+                <div id="container">
+                    <canvas id="imageView" width="1000" height="500">
+                    <p>Unfortunately, your browser is currently unsupported by our web
+                    application.  We are sorry for the inconvenience. Please use one of the
+                    supported browsers listed below, or draw the image you want using an
+                    offline tool.</p>
+                    <p>Supported browsers: <a href="http://www.opera.com">Opera</a>, <a
+                      href="http://www.mozilla.com">Firefox</a>, <a
+                      href="http://www.apple.com/safari">Safari</a>, and <a
+                      href="http://www.konqueror.org">Konqueror</a>.</p>
+                  </canvas>
+                </div>
+            </div>
+
+        </div>
+        <div class="main__right">
+            <div class="main__chat_window">
+                <div class="messages">
+
+                </div>
+            </div>
+            <div class="main__message_container">
+                <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
+                <div id="send" class="options__button">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
     </div>
+
 </body>
 
 </html>

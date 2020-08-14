@@ -1,0 +1,65 @@
+#container {
+    position: relative;
+}
+
+#container {
+    width: 1000px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#imageView {
+    border: 1px solid #000;
+}
+
+#imageTemp {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+
+canvas {
+    border-radius: 2px;
+    cursor: url(../images/pen.png), crosshair;
+}
+
+#text_tool {
+    position: absolute;
+    border: 1px dashed black;
+    outline: 0;
+    z-index: 1000 !important;
+    display: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.container .btn.btn-sm {
+    background: #06f;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    text-shadow: 0 1px #06f;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 15px;
+    margin-right: 5px;
+}
+
+.container .btn.btn-sm:active {
+    background: #06f;
+}
+
+label {
+    color: #fff;
+}
+
+input {
+    padding: 4px 4px;
+}
+
+select {
+    padding: 4px 0;
+}
