@@ -10,6 +10,80 @@
 
     <link rel="stylesheet" href="style.css" />
 
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+        
+        html {
+            box-sizing: border-box;
+        }
+        
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+        
+        .column {
+            float: left;
+            width: 25%;
+            margin-bottom: 16px;
+        }
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+            height: 600px;
+        }
+        
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+        }
+        
+        .container {
+            padding: 0 16px;
+        }
+        
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .title {
+            color: grey;
+        }
+        
+        .button {
+            border-radius: 12px;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #474e5d;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .button:hover {
+            background-color: darksalmon;
+        }
+        
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -42,6 +116,61 @@
     </div>
     <div class="main">
 
+        <div class="about-section">
+            <h1 style="font-size: 24px; text-transform: uppercase; margin-bottom:20px">About Us</h1>
+            <p>The new generation behind the new web!</p>
+        </div>
+
+        <div class="row" style="padding: 60px;">
+
+            <div class="column">
+                <div class="card">
+                    <img src="./images/philip.jpg" alt="captain" style="width:100%" />
+                    <div class="container" style="padding:20px;">
+                        <h2 style="margin-bottom:20px;">Andre Philip</h2>
+                        <p style="margin-bottom:10px;">"Captain Philip"</p>
+                        <p style="margin-bottom:10px;">The dude that does everything it takes to survive, even...</p>
+                        <p>hello@andrephilip.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="./images/ricky.png" alt="Ricky" style="width:100%" />
+                    <div class="container" style="padding:20px;">
+                        <h2 style="margin-bottom:20px;">Ricardo Simões</h2>
+                        <p style="margin-bottom:10px;">"9 & Half Fingered Golden Boy"</p>
+                        <p style="margin-bottom:10px;">The beta taster of everything, really everything.</p>
+                        <p>ricardosimoess2001@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="./images/pinho.jpg" alt="Mike" style="width:100%" />
+                    <div class="container" style="padding:20px;">
+                        <h2 style="margin-bottom:20px;">João Pinho</h2>
+                        <p style="margin-bottom:10px;">"Johny God's hair"</p>
+                        <p style="margin-bottom:10px;">The peace in person with Rapunzel's hair. Be ready to be saved.</p>
+                        <p>joao.pinho.1234@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="./images/leila.jpg" alt="Leila" style="width:100%" />
+                    <div class="container" style="padding:20px;">
+                        <h2 style="margin-bottom:20px;">Leila Oliveira</h2>
+                        <p style="margin-bottom:10px;">"Queen of Loops"</p>
+                        <p style="margin-bottom:10px;">The alien that loops through your life like no one else.</p>
+                        <p>leila_oliveira0@hotmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </body>
